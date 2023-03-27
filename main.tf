@@ -3,7 +3,7 @@ provider "aws" {
   
 }
 resource "aws_kms_key" "this" {
-   count = var.create ? 1 : 0
+   count = var.create_kms ? 1 : 0
 
   deletion_window_in_days = var.deletion_window_in_days
   policy = data.aws_iam_policy_document.this.json
@@ -12,6 +12,7 @@ resource "aws_kms_key" "this" {
 
 
 resource "aws_kms_alias" "alias" {
+  count = var.create_alias ? 1 : 0
   target_key_id = aws_kms_key.this[0].key_id
   name          = "alias/${var.environment}-${var.name}"
 }
