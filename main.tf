@@ -1,4 +1,7 @@
-
+provider "aws" {
+  region = "eu-west-2"
+  
+}
 resource "aws_kms_key" "this" {
    count = var.create ? 1 : 0
 
@@ -9,7 +12,7 @@ resource "aws_kms_key" "this" {
 
 
 resource "aws_kms_alias" "alias" {
-  target_key_id = aws_kms_key.this.key_id
+  target_key_id = aws_kms_key.this[0].key_id
   name          = "alias/${var.environment}-${var.name}"
 }
 
