@@ -8,15 +8,15 @@ variable "create_alias" {
   type        = bool
   default     = false
 }
-variable "name" {
+variable "kms_name" {
  type = string
- default = "demo"
+ default = ""
   
 }
 variable "environment" {
   description = "The environment to deploy to."
   type        = string
-  default     = "dev"
+  default     = ""
   validation {
     condition     = contains(["dev", "prod", "sit", "snd", "uat"], var.environment)
     error_message = "Valid values for var: environment are (dev, prod, sit, snd, uat)."
