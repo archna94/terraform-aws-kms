@@ -18,6 +18,7 @@ resource "aws_kms_alias" "alias" {
 }
 
 data "aws_iam_policy_document" "this" {
+  count = var.create_kms_policy ? 1 : 0
 
   source_policy_documents   = var.source_policy_documents
   override_policy_documents = var.override_policy_documents

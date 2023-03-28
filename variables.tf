@@ -39,6 +39,12 @@ variable "aliases_use_name_prefix" {
   default     = false
 }
 
+variable "create_kms_policy" {
+  description = "Determines whether resources will be created (affects all resources)"
+  type        = bool
+  default     = false
+}
+
 variable "source_policy_documents" {
   description = "List of IAM policy documents that are merged together into the exported document. Statements must have unique `sid`s"
   type        = list(string)
