@@ -14,7 +14,7 @@ resource "aws_kms_key" "this" {
 resource "aws_kms_alias" "alias" {
   count = var.create_alias ? 1 : 0
   target_key_id = aws_kms_key.this[0].key_id
-  name          = "alias/${var.environment}-${var.name}"
+  name          = "alias/${var.environment}-${var.kms_name}"
 }
 
 data "aws_iam_policy_document" "this" {
