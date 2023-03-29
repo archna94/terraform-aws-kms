@@ -1,16 +1,14 @@
 provider "aws" {
-  region = "eu-west-2"
-  
+  region = var.region 
 }
+
 resource "aws_kms_key" "this" {
    count = var.create_kms ? 1 : 0
-
   deletion_window_in_days = var.deletion_window_in_days
   policy = data.aws_iam_policy_document.this[0].json
   tags = var.tags
 }
 
-#
 resource "aws_kms_alias" "alias" {
   count = var.create_alias ? 1 : 0
   target_key_id = aws_kms_key.this[0].key_id

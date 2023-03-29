@@ -1,22 +1,26 @@
+variable "region" {
+  type = string
+  default = ""
+}
 variable "create_kms" {
   description = "Determines whether resources will be created (affects all resources)"
   type        = bool
-  default     = false
+  default     = true
 }
 variable "create_alias" {
   description = "Determines whether resources will be created (affects all resources)"
   type        = bool
-  default     = false
+  default     = true
 }
 variable "kms_name" {
  type = string
- default = ""
+ default = "demo"
   
 }
 variable "environment" {
   description = "The environment to deploy to."
   type        = string
-  default     = ""
+  default     = "dev"
   validation {
     condition     = contains(["dev", "prod", "sit", "snd", "uat"], var.environment)
     error_message = "Valid values for var: environment are (dev, prod, sit, snd, uat)."
@@ -42,7 +46,7 @@ variable "aliases_use_name_prefix" {
 variable "create_kms_policy" {
   description = "Determines whether resources will be created (affects all resources)"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "source_policy_documents" {
