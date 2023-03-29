@@ -10,7 +10,7 @@ resource "aws_kms_key" "this" {
   tags = var.tags
 }
 
-
+#
 resource "aws_kms_alias" "alias" {
   count = var.create_alias ? 1 : 0
   target_key_id = aws_kms_key.this[0].key_id
