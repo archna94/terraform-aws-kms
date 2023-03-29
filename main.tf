@@ -6,7 +6,7 @@ resource "aws_kms_key" "this" {
    count = var.create_kms ? 1 : 0
 
   deletion_window_in_days = var.deletion_window_in_days
-  policy = data.aws_iam_policy_document.this.json
+  policy = data.aws_iam_policy_document.this[0].json
   tags = var.tags
 }
 
