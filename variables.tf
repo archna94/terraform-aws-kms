@@ -1,6 +1,6 @@
 variable "region" {
   type = string
-  default = ""
+  default = "eu-west-2"
 }
 variable "create_kms" {
   description = "Determines whether resources will be created (affects all resources)"
